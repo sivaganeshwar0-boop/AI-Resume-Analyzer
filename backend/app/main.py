@@ -22,8 +22,11 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup_db():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+    except Exception as e:
+        print(f"Database initialization warning on startup: {e}")
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
