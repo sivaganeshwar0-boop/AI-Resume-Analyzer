@@ -1,0 +1,36 @@
+# Node dependencies & build outputs
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python Virtual Environment & Cache
+venv/
+backend/venv/
+__pycache__/
+*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+backend/.pytest_cache/
+
+# Databases & Uploads
+*.db
+*.sqlite3
+sql_app.db
+backend/sql_app.db
+uploads/
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Environment variables & local secrets
+.env
+*.env
+backend/.env
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
