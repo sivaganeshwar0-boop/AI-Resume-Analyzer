@@ -34,4 +34,8 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+try:
+    os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+except Exception:
+    settings.UPLOAD_DIR = "/tmp/uploads"
+    os.makedirs(settings.UPLOAD_DIR, exist_ok=True)

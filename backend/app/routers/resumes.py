@@ -42,7 +42,11 @@ async def upload_resume(
 
     # Save to local upload folder
     user_upload_dir = os.path.join(settings.UPLOAD_DIR, str(current_user.id))
-    os.makedirs(user_upload_dir, exist_ok=True)
+    try:
+        os.makedirs(user_upload_dir, exist_ok=True)
+    except Exception:
+        user_upload_dir = os.path.join("/tmp/uploads", str(current_user.id))
+        os.makedirs(user_upload_dir, exist_ok=True)
 
     file_path = os.path.join(user_upload_dir, file.filename)
     with open(file_path, "wb") as buffer:
